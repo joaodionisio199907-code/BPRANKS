@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BitPranks BOT </title>
+    <title>BitPranks BOT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -17,29 +17,21 @@
         .tarkov-gradient { background: radial-gradient(circle at top, rgba(145, 70, 255, 0.15) 0%, rgba(11, 14, 17, 1) 80%); }
         .text-glow { text-shadow: 0 0 20px rgba(145, 70, 255, 0.6); }
 
-        /* Ajuste especial para el Logo */
-        .logo-container {
-            height: 50px; /* Altura fija para controlar el navbar */
-            width: auto;
-            display: flex;
-            align-items: center;
-        }
-        .logo-img {
-            height: 100%; /* Ocupa todo el alto disponible del contenedor */
-            width: auto;
-            object-fit: contain;
-        }
+        .logo-container { height: 50px; width: auto; display: flex; align-items: center; }
+        .logo-img { height: 100%; width: auto; object-fit: contain; }
 
         @media (max-width: 768px) {
-            .logo-container { height: 40px; } /* Un poco más pequeño en móvil */
+            .logo-container { height: 40px; }
         }
+
+        /* Ajuste para el widget de Ko-fi */
+        .kofitext img { display: inline-block !important; vertical-align: middle; }
     </style>
 </head>
 <body>
 
     <nav class="fixed top-0 w-full z-[100] bg-[#0b0e11]/95 backdrop-blur-md border-b border-white/10">
         <div class="px-4 py-3 md:px-8 flex justify-between items-center max-w-7xl mx-auto">
-            
             <a href="#inicio" class="flex items-center gap-3 md:gap-4 group">
                 <div class="logo-container">
                     <img src="img/logo.png" alt="Logo" class="logo-img filter drop-shadow-[0_0_10px_rgba(145,70,255,0.8)] transition-transform group-hover:scale-110">
@@ -55,7 +47,7 @@
                     <a href="#seguridad" class="hover:text-[#9146ff] transition">Seguridad</a>
                     <a href="#precios" class="hover:text-[#9146ff] transition">Precios</a>
                 </nav>
-                <a href="#" class="bg-twitch px-4 py-2 md:px-6 md:py-2.5 rounded-lg text-white font-bold text-xs md:text-sm hover:bg-[#772ce8] transition shadow-lg shadow-purple-500/30 whitespace-nowrap">
+                <a href="#precios" class="bg-twitch px-4 py-2 md:px-6 md:py-2.5 rounded-lg text-white font-bold text-xs md:text-sm hover:bg-[#772ce8] transition shadow-lg shadow-purple-500/30 whitespace-nowrap">
                     DESCARGAR
                 </a>
             </div>
@@ -88,7 +80,7 @@
     <section id="especializacion" class="max-w-6xl mx-auto py-20 px-6">
         <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-4xl md:text-5xl font-black uppercase italic mb-4">Sistemas <span class="twitch-purple">Optimizados</span></h2>
-            <p class="text-gray-400 max-w-2xl mx-auto">BitPranks ha sido diseñado específicamente para los simuladores más exigentes del mercado.</p>
+            <p class="text-gray-400 max-w-2xl mx-auto">BitPranks ha sido diseñado específicamente para los simuladores más exigentes.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -97,12 +89,10 @@
                     <i class="fa-solid fa-crosshairs text-3xl text-green-500"></i>
                     <h3 class="text-2xl font-black uppercase">Escape from Tarkov</h3>
                 </div>
-                <p class="text-gray-400 mb-6">Convierte tu raid en un campo de minas emocional para tus espectadores. El bot puede ejecutar comandos críticos que cambian el rumbo de la partida:</p>
                 <ul class="space-y-3 text-sm text-gray-300">
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> <strong>Descarte de cargador:</strong> Vacía tu arma en el peor momento.</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> <strong>Canteo involuntario:</strong> Obliga a tu PMC a asomarse.</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> <strong>Salto de pánico:</strong> Revela tu posición haciendo ruido.</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> <strong>Control de inventario:</strong> Abre la mochila en pleno combate.</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Descarte de cargador</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Canteo involuntario</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Salto de pánico</li>
                 </ul>
             </div>
 
@@ -111,12 +101,10 @@
                     <i class="fa-solid fa-shuttle-space text-3xl text-blue-400"></i>
                     <h3 class="text-2xl font-black uppercase">Star Citizen</h3>
                 </div>
-                <p class="text-gray-400 mb-6">En el espacio, nadie oirá tus gritos, pero tu chat sí. Controla los sistemas críticos de la nave de forma remota:</p>
                 <ul class="space-y-3 text-sm text-gray-300">
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> <strong>Eyección forzada:</strong> Saca al piloto de la cabina en pleno vuelo.</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> <strong>Corte de energía:</strong> Apaga los motores o escudos (Power Off).</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> <strong>Tren de aterrizaje:</strong> Despliégalo durante un combate espacial.</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> <strong>Quantum Cancel:</strong> Interrumpe los viajes largos de forma súbita.</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Eyección forzada</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Corte de energía</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Quantum Cancel</li>
                 </ul>
             </div>
         </div>
@@ -132,61 +120,79 @@
                     <div class="space-y-6 text-gray-300">
                         <div class="flex gap-4">
                             <i class="fa-solid fa-microchip text-2xl text-green-500"></i>
-                            <p><strong>Emulación de Hardware:</strong> No tocamos la memoria RAM. El juego detecta un teclado real, no un software.</p>
+                            <p><strong>Emulación de Hardware:</strong> El juego detecta un teclado real, no software.</p>
                         </div>
                         <div class="flex gap-4">
                             <i class="fa-solid fa-shuffle text-2xl text-green-500"></i>
-                            <p><strong>Input Randomizer:</strong> Añadimos milisegundos aleatorios a cada pulsación para romper patrones robóticos.</p>
-                        </div>
-                        <div class="flex gap-4">
-                            <i class="fa-solid fa-code text-2xl text-green-500"></i>
-                            <p><strong>0% Inyección:</strong> El código corre de forma externa, manteniendo tu cuenta de Tarkov a salvo.</p>
+                            <p><strong>Input Randomizer:</strong> Rompe patrones robóticos con latencia aleatoria.</p>
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/3 flex justify-center" data-aos="zoom-in">
+                <div class="w-full md:w-1/3 flex justify-center">
                     <i class="fa-solid fa-user-shield text-[120px] md:text-[200px] text-green-500/20"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="precios" class="max-w-4xl mx-auto py-20 md:py-32 px-6 text-center">
-        <h2 class="text-4xl md:text-6xl font-black mb-16 uppercase italic">Acceso Total</h2>
+    <section id="precios" class="max-w-6xl mx-auto py-20 md:py-32 px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-4 text-white">Adquirir <span class="twitch-purple">Licencia</span></h2>
+            <p class="text-gray-400">Selecciona tu versión de despliegue</p>
+        </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            <div class="card-dark p-10 md:p-14 rounded-[3rem] border-2 border-twitch-purple relative flex flex-col justify-between" data-aos="fade-right">
-                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-twitch px-8 py-2 rounded-full text-xs font-black uppercase shadow-xl">PMC EDITION</div>
-                <div>
-                    <div class="text-6xl font-black mb-4">14.99€</div>
-                    <div class="text-gray-500 uppercase font-bold tracking-widest text-sm mb-10">Suscripción Mensual</div>
+            <div class="card-dark p-10 rounded-[3rem] border-2 border-twitch-purple flex flex-col items-center justify-between relative overflow-hidden group" data-aos="fade-right">
+                <div class="absolute top-0 right-0 bg-twitch px-6 py-2 rounded-bl-2xl text-[10px] font-black uppercase tracking-widest">Activo</div>
+                
+                <div class="w-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-twitch/20 p-4 rounded-2xl">
+                            <i class="fa-solid fa-bolt text-3xl twitch-purple"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="text-2xl font-black uppercase italic">PMC EDITION</h3>
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-wider">Acceso Instantáneo</p>
+                        </div>
+                    </div>
                     
-                    <ul class="text-left space-y-5 mb-12 text-sm md:text-base">
-                        <li class="flex items-center gap-4"><i class="fa-solid fa-check text-twitch-purple"></i> Acciones de Movimiento (WASD)</li>
-                        <li class="flex items-center gap-4"><i class="fa-solid fa-check text-twitch-purple"></i> Acciones de Combate (Fuego/Reload)</li>
-                        <li class="flex items-center gap-4"><i class="fa-solid fa-check text-twitch-purple"></i> Soporte Premium en Discord</li>
-                        <li class="flex items-center gap-4"><i class="fa-solid fa-check text-twitch-purple"></i> Actualizaciones automáticas</li>
+                    <ul class="space-y-4 text-left mb-10 text-gray-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-green-500"></i> Full Tarkov & Star Citizen</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-green-500"></i> Anti-cheat Stealth Bypass</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-green-500"></i> Soporte Premium Discord</li>
                     </ul>
                 </div>
-                
-                <a href="#" class="block w-full py-5 bg-twitch rounded-2xl font-black text-xl hover:bg-[#772ce8] transition shadow-lg active:scale-95 uppercase">
-                    Comprar Ahora
-                </a>
+
+                <div class="w-full bg-white/5 p-6 rounded-2xl border border-white/10 flex flex-col items-center gap-4">
+                    <p class="text-[10px] font-black text-gray-500 mb-2 uppercase tracking-widest">Pago seguro vía Ko-fi</p>
+                    <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                    <script type='text/javascript'>
+                        kofiwidget2.init('BUY BITPRANKS HERE!', '#9146ff', 'G2G11RK4AZ');
+                        kofiwidget2.draw();
+                    </script>
+                </div>
             </div>
 
-            <div class="border-2 border-dashed border-white/10 p-10 rounded-[3rem] flex flex-col justify-center items-center text-center opacity-40 grayscale" data-aos="fade-left">
-                <i class="fa-solid fa-lock text-5xl mb-6"></i>
-                <h3 class="text-2xl font-bold mb-4 uppercase">Lifetime Access</h3>
-                <p class="text-sm text-gray-500 italic">"Estamos recolectando datos de los laboratorios para ofrecer el mejor acceso permanente."</p>
-                <div class="mt-8 font-black text-gray-700">PRÓXIMAMENTE</div>
+            <div class="card-dark p-10 rounded-[3rem] border-2 border-white/5 flex flex-col items-center justify-center text-center relative opacity-40 grayscale hover:grayscale-0 transition-all duration-500 group" data-aos="fade-left">
+                <div class="mb-8">
+                    <div class="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:animate-pulse">
+                        <i class="fa-solid fa-robot text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase mb-2 text-gray-300 italic">NEW BOT</h3>
+                    <p class="text-gray-500 text-sm max-w-[250px] mx-auto">Nuevos sistemas de automatización en desarrollo para 2026.</p>
+                </div>
+
+                <div class="w-full py-5 bg-gray-800/30 border border-white/5 rounded-2xl font-black text-xl text-gray-600 cursor-not-allowed uppercase tracking-tighter">
+                    Coming Soon
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="border-t border-white/5 py-16 text-center opacity-50">
         <div class="text-xl font-black tracking-tighter mb-4 italic">BIT<span class="twitch-purple">PRANKS</span></div>
-        <p class="text-[10px] md:text-xs max-w-md mx-auto leading-relaxed px-6">
-            BITPRANKS no está afiliado con Battlestate Games ni Cloud Imperium Games. El uso de software de terceros es bajo su propia responsabilidad.
+        <p class="text-[10px] md:text-xs max-w-md mx-auto leading-relaxed px-6 uppercase tracking-widest">
+            Uso bajo responsabilidad del usuario. 2026 © BITPRANKS.
         </p>
     </footer>
 
