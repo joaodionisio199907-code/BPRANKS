@@ -1,117 +1,157 @@
 <!DOCTYPE html>
-
-<html lang="es">
-
+<html lang="es" class="scroll-smooth">
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>BitPranks | Monetiza tu Raid de Tarkov</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-
-        body { background-color: #0b0e11; color: #efeff1; font-family: 'Inter', sans-serif; }
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        
+        body { background-color: #0b0e11; color: #efeff1; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .twitch-purple { color: #9146ff; }
-
         .bg-twitch { background-color: #9146ff; }
-
-        .card-dark { background-color: #18181b; border: 1px solid #2d2d31; }
-
-        .tarkov-gradient { background: linear-gradient(180deg, rgba(145, 70, 255, 0.1) 0%, rgba(11, 14, 17, 1) 100%); }
-
+        .card-dark { background-color: #18181b; border: 1px solid #2d2d31; transition: all 0.3s ease; }
+        .card-dark:hover { border-color: #9146ff; transform: translateY(-5px); }
+        .tarkov-gradient { background: radial-gradient(circle at top, rgba(145, 70, 255, 0.15) 0%, rgba(11, 14, 17, 1) 70%); }
+        .text-glow { text-shadow: 0 0 20px rgba(145, 70, 255, 0.5); }
+        
+        /* Animación suave para el scroll */
+        html { scroll-behavior: smooth; }
     </style>
-
 </head>
-
 <body>
 
-    <nav class="p-6 flex justify-between items-center max-w-6xl mx-auto">
-
-        <div class="text-2xl font-black tracking-tighter">BIT<span class="twitch-purple">PRANKS</span></div>
-
-        <div class="space-x-6 hidden md:block text-sm font-bold uppercase tracking-widest">
-
-            <a href="#seguridad" class="hover:text-[#9146ff]">Seguridad</a>
-
-            <a href="#precios" class="hover:text-[#9146ff]">Precios</a>
-
-            <a href="#" class="bg-twitch px-4 py-2 rounded text-white">Descargar Bot</a>
-
+    <nav class="fixed top-0 w-full z-50 bg-[#0b0e11]/80 backdrop-blur-md border-b border-white/5">
+        <div class="p-4 flex justify-between items-center max-w-6xl mx-auto">
+            <div class="flex items-center gap-3">
+                <img src="tu-logo.ico" alt="Logo" class="w-8 h-8 object-contain">
+                <div class="text-2xl font-black tracking-tighter">BIT<span class="twitch-purple">PRANKS</span></div>
+            </div>
+            
+            <div class="space-x-8 hidden md:flex items-center text-xs font-bold uppercase tracking-widest">
+                <a href="#inicio" class="hover:text-[#9146ff] transition">Inicio</a>
+                <a href="#seguridad" class="hover:text-[#9146ff] transition">Seguridad</a>
+                <a href="#precios" class="hover:text-[#9146ff] transition">Precios</a>
+                <a href="#" class="bg-twitch px-5 py-2.5 rounded-lg text-white hover:bg-[#772ce8] transition shadow-lg shadow-purple-500/20">
+                    Descargar Bot
+                </a>
+            </div>
         </div>
-
     </nav>
 
-    <section class="tarkov-gradient pt-10 pb-20 px-6 text-center">
-
-        <h1 class="text-5xl md:text-7xl font-black mb-4 uppercase italic">Tus Bits controlan <br><span class="twitch-purple text-glow">tu partida</span></h1>
-
-        <p class="max-w-2xl mx-auto text-gray-400 text-lg mb-8">
-
-            La herramienta definitiva para streamers de Tarkov. Convierte cada Cheer en una acción real dentro del juego. Gana dinero mientras tus espectadores te trollean.
-
-        </p>
-
-        <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-
-            <a href="#" class="bg-twitch hover:bg-[#772ce8] text-white px-8 py-4 rounded-xl font-bold text-xl transition transform hover:scale-105 shadow-lg shadow-purple-500/20">
-
-                EMPEZAR A GANAR AHORA
-
-            </a>
-
-            <div class="flex items-center gap-2 text-green-500 font-mono text-sm">
-
-                <i class="fa-solid fa-shield-check"></i> ESCANEO VIRUSTOTAL: 0/72 CLEAN
-
+    <section id="inicio" class="tarkov-gradient pt-32 pb-20 px-6 text-center min-h-screen flex flex-col justify-center">
+        <div data-aos="zoom-in" data-aos-duration="1000">
+            <h1 class="text-6xl md:text-8xl font-black mb-6 uppercase italic leading-none">
+                Tus Bits controlan <br><span class="twitch-purple text-glow">tu partida</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl mb-10">
+                La herramienta definitiva para streamers de Tarkov. Convierte cada Cheer en una acción real. Gana dinero mientras tus espectadores te trollean.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="#precios" class="bg-twitch hover:bg-[#772ce8] text-white px-10 py-5 rounded-2xl font-black text-xl transition transform hover:scale-105 shadow-2xl shadow-purple-500/40">
+                    EMPEZAR A GANAR AHORA
+                </a>
+                <div class="flex items-center gap-2 text-green-500 font-mono text-sm bg-green-500/10 px-4 py-2 rounded-full border border-green-500/20">
+                    <i class="fa-solid fa-shield-check"></i> ESCANEO VIRUSTOTAL: 0/72 CLEAN
+                </div>
             </div>
-
         </div>
-
     </section>
 
-    <section id="seguridad" class="max-w-5xl mx-auto px-6 py-20">
-
-        <div class="card-dark rounded-3xl p-8 md:p-12 border-l-8 border-green-500">
-
-            <div class="flex flex-col md:flex-row gap-10 items-center">
-
+    <section id="seguridad" class="max-w-6xl mx-auto px-6 py-32">
+        <div class="card-dark rounded-[2rem] p-8 md:p-16 border-l-8 border-green-500" data-aos="fade-right">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
                 <div class="flex-1">
-
-                    <h2 class="text-3xl font-bold mb-4 text-green-400 uppercase tracking-tighter">Seguridad Garantizada</h2>
-
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-
-                        Nuestro bot utiliza **simulación de hardware (emulación de teclado)**. A diferencia de otros programas, BitPranks NO inyecta código en el juego ni lee la memoria.Para Nikita, es como si tú pulsaras la tecla.
-
+                    <h2 class="text-4xl font-black mb-6 text-white uppercase tracking-tighter italic">
+                        <span class="text-green-500">0%</span> Riesgo de Ban
+                    </h2>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Nuestro bot utiliza **simulación de hardware de bajo nivel**. No inyectamos DLLs, no leemos la memoria del juego (RAM) ni modificamos archivos. Para BattleEye, es indistinguible de un teclado físico.
                     </p>
-
-                    <ul class="space-y-3 mb-8">
-
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> 100% Indetectable por Anti-Cheats</li>
-
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Código abierto y transparente</li>
-
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Sin acceso a tus contraseñas</li>
-
-                    </ul>
-
-                    <a href="https://www.virustotal.com" target="_blank" class="inline-flex items-center gap-3 bg-[#1e2329] px-4 py-2 rounded-lg border border-[#333] hover:border-green-500 transition">
-
-                        <img src="https://www.virustotal.com/gui/images/logo.svg" class="h-4" alt="VirusTotal">
-
-                        <span class="font-bold text-sm text-gray-200 uppercase">Ver Reporte en Vivo</span>
-
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                        <div class="flex items-center gap-3 text-gray-200">
+                            <i class="fa-solid fa-circle-check text-green-500"></i> No inyecta código
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-200">
+                            <i class="fa-solid fa-circle-check text-green-500"></i> Simulación Humana
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-200">
+                            <i class="fa-solid fa-circle-check text-green-500"></i> Código Transparente
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-200">
+                            <i class="fa-solid fa-circle-check text-green-500"></i> Encriptación SSL
+                        </div>
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-3 bg-[#1e2329] px-6 py-3 rounded-xl border border-white/10 hover:border-green-500 transition group">
+                        <img src="https://www.virustotal.com/gui/images/logo.svg" class="h-5 opacity-70 group-hover:opacity-100" alt="VirusTotal">
+                        <span class="font-bold text-sm text-gray-200 uppercase tracking-widest">Ver Reporte en Vivo</span>
                     </a>
-
                 </div>
+                <div class="flex-1 flex justify-center" data-aos="fade-left">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-green-500 blur-[80px] opacity-20"></div>
+                        <i class="fa-solid fa-shield-halved text-[150px] text-green-500 relative z-10"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="hidden md:block">
+    <section id="precios" class="max-w-6xl mx-auto px-6 py-32 text-center">
+        <h2 class="text-4xl md:text-6xl font-black mb-4 uppercase italic" data-aos="fade-up">Planes y Precios</h2>
+        <p class="text-gray-400 mb-16" data-aos="fade-up" data-aos-delay="100">Escoge el nivel de caos que quieres en tu stream</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="card-dark p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold mb-2">PRANKSTER</h3>
+                <div class="text-4xl font-black mb-6">9.99€<span class="text-sm text-gray-500">/mes</span></div>
+                <ul class="text-left space-y-4 mb-8 text-gray-400 text-sm">
+                    <li><i class="fa-solid fa-check text-twitch-purple mr-2"></i> Acciones Básicas (Saltar, Tirar arma)</li>
+                    <li><i class="fa-solid fa-check text-twitch-purple mr-2"></i> Soporte por Discord</li>
+                    <li><i class="fa-solid fa-check text-twitch-purple mr-2"></i> Setup en 5 minutos</li>
+                </ul>
+                <a href="#" class="block w-full py-3 border border-twitch-purple rounded-xl font-bold hover:bg-twitch transition">Seleccionar</a>
+            </div>
 
-                    <div class="w-48 h-48 rounded-full border-8 border-green
+            <div class="card-dark p-8 rounded-3xl border-2 border-twitch-purple relative transform scale-105 shadow-2xl shadow-purple-500/10" data-aos="fade-up" data-aos-delay="300">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-twitch px-4 py-1 rounded-full text-[10px] font-black uppercase">Más Popular</div>
+                <h3 class="text-xl font-bold mb-2">PMC ELITE</h3>
+                <div class="text-4xl font-black mb-6">19.99€<span class="text-sm text-gray-500">/mes</span></div>
+                <ul class="text-left space-y-4 mb-8 text-gray-400 text-sm">
+                    <li><i class="fa-solid fa-check text-twitch-purple mr-2"></i> Todas las acciones de movimiento</li>
+                    <li><i class="fa-solid fa-check text-twitch-purple mr-2"></i> Acciones de combate (Fuego, Recarga)</li>
+                    <li><i class="fa-solid fa-check text-twitch-purple mr-2"></i> Prioridad en actualizaciones</li>
+                </ul>
+                <a href="#" class="block w-full py-3 bg-twitch rounded-xl font-bold hover:bg-[#772ce8] transition">Seleccionar</a>
+            </div>
+
+            <div class="card-dark p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="400">
+                <h3 class="text-xl font-bold mb-2">LABS KEYCARD</h3>
+                <div class="text-4xl font-black mb-6">49.99€<span class="text-sm text-gray-500">/pago único</span></div>
+                <ul class="text-left space-y-4 mb-8 text-gray-400 text-sm">
+                    <li><i class="fa-solid fa-check text-twitch-purple mr-2"></i> Acceso Vitalicio</li>
+                    <li><i class="fa-solid fa-check text-twitch-purple mr-2"></i> Acceso a Beta de nuevas funciones</li>
+                    <li><i class="fa-solid fa-check text-twitch-purple mr-2"></i> Soporte VIP 24/7</li>
+                </ul>
+                <a href="#" class="block w-full py-3 border border-twitch-purple rounded-xl font-bold hover:bg-twitch transition">Seleccionar</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/5 py-10 text-center text-gray-600 text-sm">
+        <p>&copy; 2024 BITPRANKS. Desarrollado para Streamers por Streamers.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>
