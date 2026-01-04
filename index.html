@@ -16,120 +16,139 @@
         .card-dark { background-color: #18181b; border: 1px solid #2d2d31; }
         .tarkov-gradient { background: radial-gradient(circle at top, rgba(145, 70, 255, 0.15) 0%, rgba(11, 14, 17, 1) 80%); }
         .text-glow { text-shadow: 0 0 20px rgba(145, 70, 255, 0.6); }
-        
-        /* Ajuste para que las secciones ocupen bien el móvil */
-        section { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+        /* Ajuste especial para el Logo */
+        .logo-container {
+            height: 50px; /* Altura fija para controlar el navbar */
+            width: auto;
+            display: flex;
+            align-items: center;
+        }
+        .logo-img {
+            height: 100%; /* Ocupa todo el alto disponible del contenedor */
+            width: auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .logo-container { height: 40px; } /* Un poco más pequeño en móvil */
+        }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-50 bg-[#0b0e11]/90 backdrop-blur-lg border-b border-white/10">
-        <div class="p-4 flex justify-between items-center max-w-6xl mx-auto">
-            <div class="flex items-center gap-4">
-                <img src="img/logo.png" alt="Logo"">
-                <div class="text-xl md:text-2xl font-black tracking-tighter uppercase">BIT<span class="twitch-purple text-glow">PRANKS</span></div>
-            </div>
+    <nav class="fixed top-0 w-full z-[100] bg-[#0b0e11]/95 backdrop-blur-md border-b border-white/10">
+        <div class="px-4 py-3 md:px-8 flex justify-between items-center max-w-7xl mx-auto">
             
-            <div class="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest">
-                <a href="#seguridad" class="hover:text-[#9146ff] transition">Seguridad</a>
-                <a href="#precios" class="hover:text-[#9146ff] transition">Precios</a>
-                <a href="#" class="bg-twitch px-6 py-2 rounded-lg text-white hover:bg-[#772ce8] transition shadow-lg shadow-purple-500/30">
-                    Descargar
+            <a href="#inicio" class="flex items-center gap-3 md:gap-4 group">
+                <div class="logo-container">
+                    <img src="tu-logo.ico" alt="Logo" class="logo-img filter drop-shadow-[0_0_10px_rgba(145,70,255,0.8)] transition-transform group-hover:scale-110">
+                </div>
+                <div class="text-2xl md:text-3xl font-black tracking-tighter uppercase leading-none">
+                    BIT<span class="twitch-purple text-glow">PRANKS</span>
+                </div>
+            </a>
+            
+            <div class="flex items-center gap-4">
+                <nav class="hidden md:flex space-x-6 text-[11px] font-bold uppercase tracking-[0.2em] mr-6">
+                    <a href="#seguridad" class="hover:text-[#9146ff] transition">Seguridad</a>
+                    <a href="#precios" class="hover:text-[#9146ff] transition">Precios</a>
+                </nav>
+                <a href="#" class="bg-twitch px-4 py-2 md:px-6 md:py-2.5 rounded-lg text-white font-bold text-xs md:text-sm hover:bg-[#772ce8] transition shadow-lg shadow-purple-500/30 whitespace-nowrap">
+                    DESCARGAR
                 </a>
             </div>
         </div>
     </nav>
 
-    <section id="inicio" class="tarkov-gradient min-h-screen flex flex-col justify-center items-center text-center pt-20">
+    <section id="inicio" class="tarkov-gradient min-h-screen flex flex-col justify-center items-center text-center pt-24 px-6">
         <div data-aos="zoom-in">
-            <h1 class="text-4xl md:text-7xl lg:text-8xl font-black mb-6 uppercase italic leading-[1.1]">
-                Tus Bits mandan <br><span class="twitch-purple text-glow">en tu raid</span>
+            <h1 class="text-5xl md:text-7xl lg:text-9xl font-black mb-6 uppercase italic leading-[0.9]">
+                Tus Bits <br><span class="twitch-purple text-glow">te matan</span>
             </h1>
-            <p class="max-w-xl mx-auto text-gray-400 text-base md:text-xl mb-10 px-4">
-                Convierte cada Cheer en una acción real dentro de Escape from Tarkov. Gana dinero mientras tu comunidad se divierte trolleándote.
+            <p class="max-w-2xl mx-auto text-gray-400 text-lg md:text-2xl mb-12 font-medium">
+                Tus espectadores compran acciones. Tu PMC las ejecuta. <br class="hidden md:block"> Monetiza el trolleo en tiempo real.
             </p>
-            <div class="flex flex-col gap-6 justify-center items-center">
-                <a href="#precios" class="w-full md:w-auto bg-twitch hover:bg-[#772ce8] text-white px-10 py-5 rounded-2xl font-black text-lg md:text-xl transition transform active:scale-95 shadow-2xl shadow-purple-500/40 uppercase">
-                    Empezar ahora
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="#precios" class="w-full md:w-auto bg-twitch hover:bg-[#772ce8] text-white px-12 py-6 rounded-2xl font-black text-xl transition transform active:scale-95 shadow-2xl shadow-purple-500/40 uppercase">
+                    OBTENER BITPRANKS
                 </a>
-                <div class="flex items-center gap-2 text-green-500 font-mono text-[10px] md:text-xs bg-green-500/10 px-4 py-2 rounded-full border border-green-500/30 tracking-widest uppercase">
-                    <i class="fa-solid fa-shield-check"></i> Anticheat Safe: 0/72 Clean
+                <div class="flex items-center gap-3 text-green-500 font-mono text-xs bg-green-500/5 border border-green-500/20 px-6 py-3 rounded-full uppercase tracking-tighter">
+                    <span class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    Indetectable por BattleEye
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="seguridad" class="max-w-6xl mx-auto py-20 md:py-32">
-        <div class="card-dark rounded-3xl p-6 md:p-16 border-l-4 md:border-l-8 border-green-500" data-aos="fade-up">
-            <div class="flex flex-col md:flex-row gap-10 items-center">
-                <div class="w-full md:flex-1 order-2 md:order-1">
-                    <h2 class="text-3xl md:text-5xl font-black mb-6 text-white uppercase italic tracking-tighter">
-                        Tecnología <span class="text-green-500 underline decoration-2">Indetectable</span>
+    <section id="seguridad" class="max-w-6xl mx-auto py-20 px-6">
+        <div class="card-dark rounded-[2.5rem] p-8 md:p-16 border-t-4 md:border-t-0 md:border-l-8 border-green-500" data-aos="fade-up">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:flex-1">
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 text-white uppercase italic tracking-tighter leading-none">
+                        Seguridad <br><span class="text-green-500">Nivel Militar</span>
                     </h2>
-                    <p class="text-gray-400 text-base md:text-lg mb-8 leading-relaxed">
-                        No somos un "cheat". BitPranks utiliza un sistema de **emulación de periféricos**. Actuamos como un teclado virtual que envía señales al juego.
-                    </p>
-                    <div class="space-y-4 mb-10 text-sm md:text-base">
-                        <div class="flex items-start gap-3 text-gray-200">
-                            <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
-                            <span><strong>Sin Inyección:</strong> No toca los archivos .exe ni .dll del juego.</span>
+                    <div class="space-y-6 text-gray-300">
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-microchip text-2xl text-green-500"></i>
+                            <p><strong>Emulación de Hardware:</strong> No tocamos la memoria RAM. El juego detecta un teclado real, no un software.</p>
                         </div>
-                        <div class="flex items-start gap-3 text-gray-200">
-                            <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
-                            <span><strong>Simulación Humana:</strong> Las pulsaciones tienen tiempos aleatorios para evitar patrones.</span>
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-shuffle text-2xl text-green-500"></i>
+                            <p><strong>Input Randomizer:</strong> Añadimos milisegundos aleatorios a cada pulsación para romper patrones robóticos.</p>
                         </div>
-                        <div class="flex items-start gap-3 text-gray-200">
-                            <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
-                            <span><strong>Zero-Risk:</strong> Diseñado específicamente para evitar flags de BattleEye.</span>
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-code text-2xl text-green-500"></i>
+                            <p><strong>0% Inyección:</strong> El código corre de forma externa, manteniendo tu cuenta de Tarkov a salvo.</p>
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/3 flex justify-center order-1 md:order-2" data-aos="zoom-in">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-green-500 blur-[60px] opacity-20"></div>
-                        <i class="fa-solid fa-shield-virus text-[100px] md:text-[160px] text-green-500 relative z-10"></i>
-                    </div>
+                <div class="w-full md:w-1/3 flex justify-center" data-aos="zoom-in">
+                    <i class="fa-solid fa-user-shield text-[120px] md:text-[200px] text-green-500/20"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="precios" class="max-w-4xl mx-auto py-20 md:py-32 text-center px-4">
-        <h2 class="text-4xl md:text-6xl font-black mb-12 uppercase italic" data-aos="fade-up">Elige tu Plan</h2>
+    <section id="precios" class="max-w-4xl mx-auto py-20 md:py-32 px-6 text-center">
+        <h2 class="text-4xl md:text-6xl font-black mb-16 uppercase italic">Acceso Total</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div class="card-dark p-8 md:p-12 rounded-[2.5rem] border-2 border-twitch-purple relative shadow-2xl shadow-purple-500/10" data-aos="fade-right">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-twitch px-6 py-1 rounded-full text-xs font-black uppercase tracking-tighter">Acceso Inmediato</div>
-                <h3 class="text-2xl font-black mb-2 uppercase">PMC EDITION</h3>
-                <div class="text-5xl font-black mb-8 italic">14.99€<span class="text-sm text-gray-500 not-italic">/mes</span></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <div class="card-dark p-10 md:p-14 rounded-[3rem] border-2 border-twitch-purple relative flex flex-col justify-between" data-aos="fade-right">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-twitch px-8 py-2 rounded-full text-xs font-black uppercase shadow-xl">PMC EDITION</div>
+                <div>
+                    <div class="text-6xl font-black mb-4">14.99€</div>
+                    <div class="text-gray-500 uppercase font-bold tracking-widest text-sm mb-10">Suscripción Mensual</div>
+                    
+                    <ul class="text-left space-y-5 mb-12 text-sm md:text-base">
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-check text-twitch-purple"></i> Acciones de Movimiento (WASD)</li>
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-check text-twitch-purple"></i> Acciones de Combate (Fuego/Reload)</li>
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-check text-twitch-purple"></i> Soporte Premium en Discord</li>
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-check text-twitch-purple"></i> Actualizaciones automáticas</li>
+                    </ul>
+                </div>
                 
-                <ul class="text-left space-y-5 mb-10 text-gray-300">
-                    <li class="flex items-center gap-3 font-medium"><i class="fa-solid fa-bolt text-twitch-purple"></i> Acciones ilimitadas</li>
-                    <li class="flex items-center gap-3 font-medium"><i class="fa-solid fa-bolt text-twitch-purple"></i> Configuración de Bits personalizada</li>
-                    <li class="flex items-center gap-3 font-medium"><i class="fa-solid fa-bolt text-twitch-purple"></i> Soporte 24/7 en Discord</li>
-                    <li class="flex items-center gap-3 font-medium"><i class="fa-solid fa-bolt text-twitch-purple"></i> Todas las armas y movimientos</li>
-                </ul>
-                
-                <a href="#" class="block w-full py-5 bg-twitch rounded-2xl font-black text-xl hover:bg-[#772ce8] transition shadow-lg shadow-purple-900/40 transform active:scale-95">
-                    COMPRAR AHORA
+                <a href="#" class="block w-full py-5 bg-twitch rounded-2xl font-black text-xl hover:bg-[#772ce8] transition shadow-lg active:scale-95 uppercase">
+                    Comprar Ahora
                 </a>
             </div>
 
-            <div class="bg-[#18181b]/50 p-8 rounded-[2.5rem] border border-dashed border-gray-700 opacity-60 grayscale" data-aos="fade-left">
-                <div class="mb-4 inline-block bg-gray-800 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-gray-400">Próximamente</div>
-                <h3 class="text-xl font-bold mb-2 text-gray-500 uppercase">LIFETIME ACCESS</h3>
-                <p class="text-gray-600 text-sm mb-6 px-4">Estamos trabajando en un plan de pago único para siempre. Suscríbete a nuestro Discord para ser el primero en saberlo.</p>
-                <div class="text-3xl font-black text-gray-600 mb-8 italic">--.--€</div>
-                <div class="w-full py-4 border border-gray-700 rounded-2xl text-gray-600 font-bold">EN DESARROLLO</div>
+            <div class="border-2 border-dashed border-white/10 p-10 rounded-[3rem] flex flex-col justify-center items-center text-center opacity-40 grayscale" data-aos="fade-left">
+                <i class="fa-solid fa-lock text-5xl mb-6"></i>
+                <h3 class="text-2xl font-bold mb-4 uppercase">Lifetime Access</h3>
+                <p class="text-sm text-gray-500 italic">"Estamos recolectando datos de los laboratorios para ofrecer el mejor acceso permanente."</p>
+                <div class="mt-8 font-black text-gray-700">PRÓXIMAMENTE</div>
             </div>
         </div>
     </section>
 
-    <footer class="border-t border-white/5 py-12 text-center px-6">
-        <div class="text-lg font-black tracking-tighter mb-4 opacity-50">BIT<span class="twitch-purple">PRANKS</span></div>
-        <p class="text-gray-600 text-xs md:text-sm">
-            &copy; 2024 BITPRANKS. No estamos afiliados con Battlestate Games ni Twitch. <br class="hidden md:block">
-            Usa la herramienta bajo tu propia responsabilidad.
+    <footer class="border-t border-white/5 py-16 text-center opacity-50">
+        <div class="text-xl font-black tracking-tighter mb-4 italic">BIT<span class="twitch-purple">PRANKS</span></div>
+        <p class="text-[10px] md:text-xs max-w-md mx-auto leading-relaxed px-6">
+            BITPRANKS no está afiliado con Battlestate Games. Escape from Tarkov es una marca registrada de BSG. El uso de software de terceros es bajo su propia responsabilidad.
         </p>
     </footer>
 
@@ -139,7 +158,6 @@
     </script>
 </body>
 </html>
-
 
 
 
