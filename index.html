@@ -13,17 +13,24 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;900&family=Noto+Sans+SC:wght@400;900&display=swap');
         
-        :root { --twitch: #9146ff; --discord: #5865F2; }
+        :root { 
+            --twitch: #9146ff; 
+            --discord: #5865F2; 
+            --kick: #53fc18;
+        }
         body { background-color: #0b0e11; color: #efeff1; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .lang-jp { font-family: 'Noto Sans JP', sans-serif; }
         .lang-zh { font-family: 'Noto Sans SC', sans-serif; }
         
         .twitch-purple { color: var(--twitch); }
         .bg-twitch { background-color: var(--twitch); }
+        .text-kick { color: var(--kick); }
+        .bg-kick { background-color: var(--kick); }
         
         .hero-bg { background: radial-gradient(circle at 50% -20%, rgba(145, 70, 255, 0.15) 0%, rgba(11, 14, 17, 1) 70%); }
         .card-glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.5s ease; }
         .card-glass:hover { transform: translateY(-10px); border-color: var(--twitch); }
+        .card-kick:hover { border-color: var(--kick); }
 
         .discord-card { background: linear-gradient(145deg, rgba(88, 101, 242, 0.1) 0%, rgba(11, 14, 17, 1) 100%); border: 1px solid rgba(88, 101, 242, 0.2); }
 
@@ -41,6 +48,10 @@
         .lang-container:hover .lang-dropdown { display: block; }
         .lang-item { padding: 10px 16px; font-size: 12px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
         .lang-item:hover { background: var(--twitch); color: white; }
+
+        /* Scrollbar para la zona de precios en móvil */
+        .price-container::-webkit-scrollbar { height: 4px; }
+        .price-container::-webkit-scrollbar-thumb { background: var(--twitch); border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -146,38 +157,55 @@
         </div>
     </section>
 
-    <section id="precios" class="max-w-6xl mx-auto py-24 px-6 text-center">
+    <section id="precios" class="max-w-7xl mx-auto py-24 px-6 text-center">
         <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-12" id="price-main-title">PLANES DE <span class="twitch-purple">ACCESO</span></h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="card-glass p-12 rounded-[4rem]" data-aos="fade-right">
+        
+        <div class="price-container flex overflow-x-auto md:grid md:grid-cols-3 gap-8 pb-10 snap-x">
+            
+            <div class="card-glass p-10 rounded-[4rem] min-w-[320px] snap-center flex-shrink-0" data-aos="fade-right">
                 <h3 class="text-2xl font-black uppercase italic mb-6">BitPranks <span class="text-gray-500">v5</span></h3>
                 <div class="text-6xl font-black mb-4">$12,50</div>
-                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 mb-8 italic" id="price-sub-1">Lifetime Access</p>
-                <ul class="text-left space-y-4 mb-10 text-gray-400 font-bold text-sm">
-                    <li><i class="fa-solid fa-check text-twitch"></i> TODAS LAS ACCIONES DE TECLADO</li>
-                    <li><i class="fa-solid fa-check text-twitch"></i> INTEGRACIÓN BITS/COMANDOS</li>
-                    <li><i class="fa-solid fa-check text-twitch"></i> SONIDOS PERSONALIZADOS</li>
+                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 mb-8 italic" id="price-sub-1">Twitch Lifetime</p>
+                <ul class="text-left space-y-4 mb-10 text-gray-400 font-bold text-xs uppercase">
+                    <li><i class="fa-solid fa-check text-twitch mr-2"></i> Acciones de teclado</li>
+                    <li><i class="fa-solid fa-check text-twitch mr-2"></i> Integración Bits</li>
+                    <li><i class="fa-solid fa-check text-twitch mr-2"></i> Sonidos personalizados</li>
                 </ul>
                 <div class="bg-white rounded-2xl p-4 inline-block hover:scale-105 transition-transform shadow-2xl w-full">
                     <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
                     <script type='text/javascript'>
-                        kofiwidget2.init('COMPRAR BASE', '#9146ff', 'G2G11RK4AZ');
+                        kofiwidget2.init('COMPRAR TWITCH', '#9146ff', 'G2G11RK4AZ');
                         kofiwidget2.draw();
                     </script>
                 </div>
             </div>
 
-            <div class="card-glass p-12 rounded-[4rem] border-2 border-purple-500 relative bg-purple-500/5" data-aos="fade-left">
-                <div class="absolute top-8 right-[-30px] bg-purple-500 text-white text-[10px] font-black px-10 py-1 rotate-45 uppercase">EXCLUSIVO</div>
+            <div class="card-glass card-kick p-10 rounded-[4rem] border-2 border-[#53fc18] relative bg-[#53fc18]/5 min-w-[320px] snap-center flex-shrink-0" data-aos="zoom-in">
+                <div class="absolute top-8 right-[-20px] bg-[#53fc18] text-black text-[10px] font-black px-8 py-1 rotate-45 uppercase">NUEVO</div>
+                <h3 class="text-2xl font-black uppercase italic mb-6" id="kick-title">BITPRAN<span class="text-kick">KICK</span></h3>
+                <div class="text-6xl font-black mb-4">$12,00</div>
+                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-kick mb-8 italic" id="kick-desc">Kick.com Exclusive</p>
+                <ul class="text-left space-y-4 mb-10 text-gray-300 font-bold text-xs uppercase">
+                    <li><i class="fa-solid fa-bolt text-kick mr-2"></i> Integración Nativa Kick</li>
+                    <li><i class="fa-solid fa-bolt text-kick mr-2"></i> Chat Reader Ultra-Rápido</li>
+                    <li><i class="fa-solid fa-bolt text-kick mr-2"></i> Control de Macros V5</li>
+                    <li><i class="fa-solid fa-bolt text-kick mr-2"></i> Splash Screen Incluido</li>
+                </ul>
+                <a href="https://ko-fi.com/s/84bfac8139" class="block bg-kick text-black py-5 rounded-2xl font-black text-lg hover:scale-105 transition shadow-xl shadow-green-500/20 uppercase">COMPRAR KICK</a>
+            </div>
+
+            <div class="card-glass p-10 rounded-[4rem] min-w-[320px] snap-center flex-shrink-0" data-aos="fade-left">
                 <h3 class="text-2xl font-black uppercase italic mb-6">PLUS <span class="twitch-purple">DLC</span></h3>
                 <div class="text-6xl font-black mb-4">+$5,00</div>
                 <p class="text-[10px] font-black uppercase tracking-[0.4em] text-purple-400 mb-8 italic" id="price-sub-2">Upgrade your Chaos</p>
-                <ul class="text-left space-y-4 mb-10 text-gray-300 font-bold text-sm">
-                    <li><i class="fa-solid fa-star text-yellow-500"></i>AUDIO INYECT!</li>
-                    
+                <ul class="text-left space-y-4 mb-10 text-gray-300 font-bold text-xs uppercase">
+                    <li><i class="fa-solid fa-star text-yellow-500 mr-2"></i> AUDIO INJECT (VOICEMOD)</li>
+                    <li><i class="fa-solid fa-star text-yellow-500 mr-2"></i> MULTI-CANAL SUPPORT</li>
+                    <li><i class="fa-solid fa-star text-yellow-500 mr-2"></i> PRIORIDAD EN DISCORD</li>
                 </ul>
-                <a href="https://ko-fi.com/tu_link_dlc" class="block bg-twitch text-white py-5 rounded-2xl font-black text-lg hover:scale-105 transition shadow-xl shadow-purple-500/20 uppercase">OBTENER DLC</a>
+                <a href="https://ko-fi.com/bitprankteam" class="block bg-twitch text-white py-5 rounded-2xl font-black text-lg hover:scale-105 transition shadow-xl shadow-purple-500/20 uppercase">OBTENER DLC</a>
             </div>
+
         </div>
     </section>
 
@@ -185,8 +213,8 @@
         <p class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-600 mb-6" id="footer-dev">Una creación de</p>
         <a href="https://joaodionisio199907-code.github.io/GhostyWeb/" target="_blank" class="flex flex-col items-center group">
             <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-4 border border-white/5 group-hover:border-purple-500 transition-all overflow-hidden p-2">
-    <img src="img/nitroys.png" alt="Nitroys Studios Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform">
-</div>
+                <img src="img/nitroys.png" alt="Nitroys Studios Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform">
+            </div>
             <span class="text-3xl font-black italic uppercase">Nitroys<span class="twitch-purple">Studios</span></span>
         </a>
     </footer>
@@ -228,7 +256,10 @@
                 discordTitle: "Únete al <span class='text-[#5865F2]'>Discord</span>",
                 discordDesc: "¿Tienes una idea? En GhostyStudios la programamos. Soporte activo y comunidad.",
                 priceMainTitle: "PLANES DE <span class='twitch-purple'>ACCESO</span>",
-                priceSub1: "Acceso de por vida", priceSub2: "Mejora tu caos", footerDev: "Una creación de"
+                priceSub1: "Acceso de por vida", priceSub2: "Mejora tu caos", 
+                kickTitle: "BITPRAN<span class='text-kick'>KICK</span>",
+                kickDesc: "Exclusivo para Kick.com",
+                footerDev: "Una creación de"
             },
             en: {
                 navBtn: "DOWNLOAD",
@@ -244,9 +275,11 @@
                 discordTitle: "Join our <span class='text-[#5865F2]'>Discord</span>",
                 discordDesc: "Got an idea? At GhostyStudios, we'll code it. Active support and community.",
                 priceMainTitle: "ACCESS <span class='twitch-purple'>PLANS</span>",
-                priceSub1: "Lifetime Access", priceSub2: "Upgrade your chaos", footerDev: "A creation of"
-            },
-            // ... (Añadir jp y zh siguiendo el mismo patrón si es necesario)
+                priceSub1: "Lifetime Access", priceSub2: "Upgrade your chaos", 
+                kickTitle: "BITPRAN<span class='text-kick'>KICK</span>",
+                kickDesc: "Kick.com Exclusive",
+                footerDev: "A creation of"
+            }
         };
 
         function changeLang(lang) {
@@ -273,12 +306,10 @@
             document.getElementById('price-main-title').innerHTML = translations[lang].priceMainTitle;
             document.getElementById('price-sub-1').innerText = translations[lang].priceSub1;
             document.getElementById('price-sub-2').innerText = translations[lang].priceSub2;
+            document.getElementById('kick-title').innerHTML = translations[lang].kickTitle;
+            document.getElementById('kick-desc').innerText = translations[lang].kickDesc;
             document.getElementById('footer-dev').innerText = translations[lang].footerDev;
         }
     </script>
 </body>
 </html>
-
-
-
-
