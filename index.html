@@ -8,78 +8,28 @@
     <link rel="shortcut icon" href="img/logoico.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root { --twitch: #9146ff; --gold: #FFD700; --kick: #53fc18; --dark: #020202; }
         body { background-color: var(--dark); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
-
-        /* Background Particle Effect */
         #particles-js { position: fixed; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-
         .text-twitch { color: var(--twitch); }
         .text-gold { color: var(--gold); }
-        .bg-twitch { background-color: var(--twitch); }
-        .border-twitch { border-color: var(--twitch); }
-
-        /* Glassmorphism Sections */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.4s ease;
-        }
+        .text-kick { color: var(--kick); }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s ease; }
         .glass-panel:hover { border-color: var(--twitch); background: rgba(145, 70, 255, 0.05); }
-
-        /* Price Card Animation */
-        .animated-border-card {
-            position: relative;
-            background: #080808;
-            border-radius: 2.5rem;
-            overflow: hidden;
-        }
-        .animated-border-card::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: conic-gradient(transparent, transparent, transparent, var(--twitch));
-            animation: rotate 4s linear infinite;
-        }
+        .animated-border-card { position: relative; background: #080808; border-radius: 2.5rem; overflow: hidden; display: flex; flex-direction: column; height: 100%; }
+        .animated-border-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, var(--twitch)); animation: rotate 4s linear infinite; z-index: 0; }
         .animated-border-card.gold-card::before { background: conic-gradient(transparent, transparent, transparent, var(--gold)); }
         .animated-border-card.kick-card::before { background: conic-gradient(transparent, transparent, transparent, var(--kick)); }
-        
-        .animated-border-card::after {
-            content: '';
-            position: absolute;
-            inset: 2px;
-            background: #080808;
-            border-radius: 2.4rem;
-        }
-
+        .animated-border-card::after { content: ''; position: absolute; inset: 2px; background: #080808; border-radius: 2.4rem; z-index: 1; }
+        .card-inner { position: relative; z-index: 10; padding: 2.5rem; height: 100%; display: flex; flex-direction: column; flex-grow: 1; }
         @keyframes rotate { 100% { transform: rotate(360deg); } }
-
-        .hero-glow {
-            position: absolute;
-            width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(145, 70, 255, 0.1) 0%, transparent 70%);
-            top: -10vw; left: -10vw;
-            filter: blur(80px);
-            z-index: 0;
-        }
-
-        .nav-link::after {
-            content: '';
-            display: block; width: 0; height: 2px;
-            background: var(--gold); transition: width .3s;
-        }
-        .nav-link:hover::after { width: 100%; }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: var(--twitch); border-radius: 10px; }
+        .hero-glow { position: absolute; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(145, 70, 255, 0.1) 0%, transparent 70%); top: -10vw; left: -10vw; filter: blur(80px); z-index: 0; }
+        .btn-buy { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: block; width: 100%; text-align: center; }
+        .btn-buy:hover { transform: scale(1.05); filter: brightness(1.1); }
+        .step-number { font-size: 4rem; font-weight: 900; opacity: 0.1; position: absolute; top: -10px; right: 20px; }
     </style>
 </head>
 <body>
@@ -88,25 +38,25 @@
     <div class="hero-glow"></div>
 
     <nav class="fixed top-0 w-full z-[100] border-b border-white/5 bg-black/80 backdrop-blur-xl">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <img src="img/logo.png" alt="Logo" class="h-10 hover:rotate-12 transition">
-                <span class="text-2xl font-black italic tracking-tighter">BIT<span class="text-twitch">PRANKER</span></span>
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="img/logo.png" alt="Logo" class="h-16 md:h-20 hover:rotate-12 transition">
+                <span class="text-2xl font-black italic tracking-tighter uppercase">BIT<span class="text-twitch">PRANKER</span></span>
             </div>
             <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.3em]">
-                <a href="#about" class="nav-link">Nosotros</a>
-                <a href="#features" class="nav-link">Specs</a>
-                <a href="#precios" class="nav-link">Precios</a>
-                <a href="#discord" class="nav-link">Soporte</a>
+                <a href="#precios" id="nav-prices" class="hover:text-gold transition">Precios</a>
+                <a href="#about" id="nav-about" class="hover:text-gold transition">Nosotros</a>
+                <a href="#how-it-works" id="nav-how" class="hover:text-gold transition">Funcionamiento</a>
+                <a href="#discord" id="nav-support" class="hover:text-gold transition">Soporte</a>
             </div>
             <div class="flex items-center gap-4">
                 <div class="relative group cursor-pointer">
                     <span id="current-lang" class="text-[10px] font-bold border border-twitch/50 px-3 py-1 rounded-full">ES</span>
-                    <div class="absolute right-0 top-full mt-2 w-32 bg-black border border-white/10 rounded-xl hidden group-hover:block overflow-hidden">
-                        <button onclick="changeLang('es')" class="w-full text-[10px] p-3 hover:bg-twitch text-left">ESPAÑOL</button>
-                        <button onclick="changeLang('en')" class="w-full text-[10px] p-3 hover:bg-twitch text-left">ENGLISH</button>
-                        <button onclick="changeLang('jp')" class="w-full text-[10px] p-3 hover:bg-twitch text-left">日本語</button>
-                        <button onclick="changeLang('zh')" class="w-full text-[10px] p-3 hover:bg-twitch text-left">中文</button>
+                    <div class="absolute right-0 top-full mt-2 w-32 bg-black border border-white/10 rounded-xl hidden group-hover:block overflow-hidden shadow-2xl">
+                        <button onclick="changeLang('es')" class="w-full text-[10px] p-3 hover:bg-twitch text-left uppercase">Español</button>
+                        <button onclick="changeLang('en')" class="w-full text-[10px] p-3 hover:bg-twitch text-left uppercase">English</button>
+                        <button onclick="changeLang('zh')" class="w-full text-[10px] p-3 hover:bg-twitch text-left uppercase">中文 (Chinese)</button>
+                        <button onclick="changeLang('jp')" class="w-full text-[10px] p-3 hover:bg-twitch text-left uppercase">日本語 (Japanese)</button>
                     </div>
                 </div>
             </div>
@@ -115,7 +65,7 @@
 
     <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 overflow-hidden">
         <div class="relative z-10" data-aos="zoom-in">
-            <div class="inline-block px-4 py-1 border border-twitch/30 rounded-full text-[10px] font-black tracking-[0.5em] mb-8 bg-twitch/5 uppercase">Next-Gen Stream Tool</div>
+            <div id="hero-tag" class="inline-block px-4 py-1 border border-twitch/30 rounded-full text-[10px] font-black tracking-[0.5em] mb-8 bg-twitch/5 uppercase">Next-Gen Stream Tool</div>
             <h1 id="hero-title" class="text-6xl md:text-[10rem] font-black italic leading-[0.8] tracking-tighter mb-10">
                 CHAOS IS<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-twitch via-white to-gold">ELEVATED.</span>
             </h1>
@@ -123,8 +73,67 @@
                 BitPranker no es solo un bot. Es el puente definitivo entre tu chat y tu teclado. Monetiza, interactúa y diviértete como nunca.
             </p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="#precios" class="bg-twitch text-white px-12 py-5 rounded-full font-black text-lg hover:scale-105 transition shadow-2xl shadow-purple-500/40 uppercase">DESCARGAR AHORA</a>
-                <a href="#about" class="bg-white/5 border border-white/10 px-12 py-5 rounded-full font-black text-lg hover:bg-white/10 transition uppercase">Ver más</a>
+                <a href="#precios" id="btn-download" class="bg-twitch text-white px-12 py-5 rounded-full font-black text-lg hover:scale-105 transition shadow-2xl shadow-purple-500/40 uppercase">DESCARGAR AHORA</a>
+                <a href="#about" id="btn-more" class="bg-white/5 border border-white/10 px-12 py-5 rounded-full font-black text-lg hover:bg-white/10 transition uppercase text-white">Ver más</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="precios" class="py-32 bg-white/[0.02] px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <h2 id="price-main-title" class="text-5xl font-black italic uppercase tracking-widest mb-4">NUESTROS <span class="text-twitch">PLANES</span></h2>
+                <p id="price-sub" class="text-gray-500 font-bold uppercase text-[10px] tracking-[0.5em]">Elige tu nivel de caos</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
+                <div class="animated-border-card" data-aos="fade-up">
+                    <div class="card-inner">
+                        <div class="w-14 h-14 bg-twitch/10 rounded-2xl flex items-center justify-center border border-twitch/30 mb-8">
+                            <i class="fa-brands fa-twitch text-2xl text-twitch"></i>
+                        </div>
+                        <h3 class="text-2xl font-black italic uppercase mb-2">Twitch <span class="text-twitch">Edition</span></h3>
+                        <div class="text-6xl font-[1000] mb-8">$12.50</div>
+                        <ul class="space-y-4 mb-12 text-xs font-bold text-gray-400 uppercase flex-grow">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-twitch"></i> <span class="li-1">Macros Inmediatos</span></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-twitch"></i> <span class="li-2">Control de Bits</span></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-twitch"></i> <span class="li-3">Lifetime License</span></li>
+                        </ul>
+                        <a href="https://ko-fi.com/bitprankteam" class="btn-buy-text btn-buy bg-twitch text-white py-4 rounded-xl font-black text-sm uppercase shadow-lg shadow-purple-500/20">COMPRAR</a>
+                    </div>
+                </div>
+
+                <div class="animated-border-card kick-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-inner">
+                        <div class="w-14 h-14 bg-kick/10 rounded-2xl flex items-center justify-center border border-kick/30 mb-8">
+                            <span class="text-2xl font-black text-kick italic">K</span>
+                        </div>
+                        <h3 class="text-2xl font-black italic uppercase mb-2 text-white">Kick <span class="text-kick">Native</span></h3>
+                        <div class="text-6xl font-[1000] mb-8">$12.00</div>
+                        <ul class="space-y-4 mb-12 text-xs font-bold text-gray-300 uppercase flex-grow">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-bolt text-kick"></i> <span class="li-4">Ultra-Fast Chat</span></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-bolt text-kick"></i> <span class="li-5">No Latency</span></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-bolt text-kick"></i> <span class="li-6">Easy Setup</span></li>
+                        </ul>
+                        <a href="https://ko-fi.com/bitprankteam" class="btn-buy-text btn-buy bg-kick text-black py-4 rounded-xl font-black text-sm uppercase shadow-lg shadow-green-500/20">COMPRAR</a>
+                    </div>
+                </div>
+
+                <div class="animated-border-card gold-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-inner">
+                        <div class="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center border border-gold/30 mb-8">
+                            <i class="fa-solid fa-crown text-2xl text-gold"></i>
+                        </div>
+                        <h3 class="text-2xl font-black italic uppercase mb-2">DLC <span class="text-gold">PLUS</span></h3>
+                        <div class="text-6xl font-[1000] mb-8">+$5.00</div>
+                        <ul class="space-y-4 mb-12 text-xs font-bold text-gray-400 uppercase flex-grow">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-star text-gold"></i> <span class="li-7">Voicemod Inject</span></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-star text-gold"></i> <span class="li-8">Multi-Channel</span></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-star text-gold"></i> <span class="li-9">VIP Support</span></li>
+                        </ul>
+                        <a href="https://ko-fi.com/bitprankteam" class="btn-buy-text btn-buy bg-gold text-black py-4 rounded-xl font-black text-sm uppercase shadow-lg shadow-yellow-500/20">COMPRAR</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -138,8 +147,8 @@
                     <p id="about-p2">Nitroys Studios se dedica a desarrollar software de alto rendimiento para streamers que buscan algo más que simples alertas. Desarrollamos herramientas que cambian las reglas del juego.</p>
                 </div>
                 <div class="mt-10 flex gap-10">
-                    <div><div class="text-4xl font-black text-twitch">100%</div><div class="text-[10px] font-bold uppercase tracking-widest text-gray-600">Original</div></div>
-                    <div><div class="text-4xl font-black text-gold">24/7</div><div class="text-[10px] font-bold uppercase tracking-widest text-gray-600">Soporte</div></div>
+                    <div><div class="text-4xl font-black text-twitch">100%</div><div id="stat-1" class="text-[10px] font-bold uppercase tracking-widest text-gray-600">Original</div></div>
+                    <div><div class="text-4xl font-black text-gold">24/7</div><div id="stat-2" class="text-[10px] font-bold uppercase tracking-widest text-gray-600">Soporte</div></div>
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
@@ -152,88 +161,48 @@
                     <h4 class="font-black uppercase text-xs">Fast API</h4>
                 </div>
                 <div class="glass-panel p-8 rounded-[2rem] text-center col-span-2 border-b-2 border-b-white/20">
-                    <p class="text-xs italic text-gray-500 uppercase font-black">Liderando el desarrollo de herramientas para Tarkov, Rust y más.</p>
+                    <p id="about-footer-text" class="text-xs italic text-gray-500 uppercase font-black">Liderando el desarrollo de herramientas para Tarkov, Rust y más.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="precios" class="py-32 bg-white/[0.02]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-24">
-                <h2 id="price-main-title" class="text-5xl font-black italic uppercase tracking-widest mb-4">NUESTROS <span class="text-twitch">PLANES</span></h2>
-                <p class="text-gray-500 font-bold uppercase text-[10px] tracking-[0.5em]">Elige tu nivel de caos</p>
+    <section id="how-it-works" class="py-32 relative z-10 max-w-7xl mx-auto px-6 border-y border-white/5 bg-white/[0.01]">
+        <div class="text-center mb-20">
+            <h2 id="how-title" class="text-5xl font-[900] italic uppercase tracking-tighter">¿CÓMO <span class="text-twitch">FUNCIONA?</span></h2>
+            <p id="how-sub" class="text-gray-500 font-bold uppercase text-[10px] tracking-[0.5em] mt-2">Tecnología de inyección de comandos en tiempo real</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-panel p-10 rounded-[2.5rem] relative" data-aos="fade-up">
+                <span class="step-number text-twitch">01</span>
+                <div class="w-12 h-12 bg-twitch/20 rounded-xl flex items-center justify-center mb-6 border border-twitch/50"><i class="fa-solid fa-comments text-twitch"></i></div>
+                <h3 id="step1-title" class="text-xl font-black uppercase italic mb-4">Chat Reading</h3>
+                <p id="step1-desc" class="text-gray-400 text-sm leading-relaxed">Nuestra App utiliza un motor de <b>WebView2</b> para monitorizar tu chat de forma nativa.</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="animated-border-card" data-aos="fade-up">
-                    <div class="relative z-10 p-10 flex flex-col h-full">
-                        <div class="w-14 h-14 bg-twitch/10 rounded-2xl flex items-center justify-center border border-twitch/30 mb-8">
-                            <i class="fa-brands fa-twitch text-2xl text-twitch"></i>
-                        </div>
-                        <h3 class="text-2xl font-black italic uppercase mb-2">Twitch <span class="text-twitch">Edition</span></h3>
-                        <div class="text-6xl font-[1000] mb-8">$12.50</div>
-                        <ul class="space-y-4 mb-12 text-xs font-bold text-gray-400 uppercase">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-twitch"></i> <span class="li-1">Macros Inmediatos</span></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-twitch"></i> <span class="li-2">Control de Bits</span></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-twitch"></i> <span class="li-3">Lifetime License</span></li>
-                        </ul>
-                        <div class="mt-auto">
-                            <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-                            <script type='text/javascript'>
-                                kofiwidget2.init('COMPRAR', '#9146ff', 'G2G11RK4AZ');
-                                kofiwidget2.draw();
-                            </script>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="animated-border-card kick-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative z-10 p-10 flex flex-col h-full bg-black/40">
-                        <div class="w-14 h-14 bg-kick/10 rounded-2xl flex items-center justify-center border border-kick/30 mb-8">
-                            <span class="text-2xl font-black text-kick italic">K</span>
-                        </div>
-                        <h3 class="text-2xl font-black italic uppercase mb-2 text-white">Kick <span class="text-kick">Native</span></h3>
-                        <div class="text-6xl font-[1000] mb-8">$12.00</div>
-                        <ul class="space-y-4 mb-12 text-xs font-bold text-gray-300 uppercase">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-bolt text-kick"></i> <span class="li-4">Ultra-Fast Chat</span></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-bolt text-kick"></i> <span class="li-5">No Latency</span></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-bolt text-kick"></i> <span class="li-6">Easy Setup</span></li>
-                        </ul>
-                        <a href="https://ko-fi.com/s/84bfac8139" class="mt-auto bg-kick text-black py-4 rounded-xl font-black text-center text-sm hover:brightness-110 transition uppercase">Obtener Kick</a>
-                    </div>
-                </div>
-
-                <div class="animated-border-card gold-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative z-10 p-10 flex flex-col h-full">
-                        <div class="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center border border-gold/30 mb-8">
-                            <i class="fa-solid fa-crown text-2xl text-gold"></i>
-                        </div>
-                        <h3 class="text-2xl font-black italic uppercase mb-2">DLC <span class="text-gold">PLUS</span></h3>
-                        <div class="text-6xl font-[1000] mb-8">+$5.00</div>
-                        <ul class="space-y-4 mb-12 text-xs font-bold text-gray-400 uppercase">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-star text-gold"></i> <span class="li-7">Voicemod Inject</span></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-star text-gold"></i> <span class="li-8">Multi-Channel</span></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-star text-gold"></i> <span class="li-9">VIP Support</span></li>
-                        </ul>
-                        <a href="https://ko-fi.com/bitprankteam" class="mt-auto bg-gold text-black py-4 rounded-xl font-black text-center text-sm hover:brightness-110 transition uppercase">Mejorar Ahora</a>
-                    </div>
-                </div>
+            <div class="glass-panel p-10 rounded-[2.5rem] relative border-b-2 border-b-gold" data-aos="fade-up" data-aos-delay="100">
+                <span class="step-number text-gold">02</span>
+                <div class="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mb-6 border border-gold/50"><i class="fa-solid fa-gears text-gold"></i></div>
+                <h3 id="step2-title" class="text-xl font-black uppercase italic mb-4">Macro Logic</h3>
+                <p id="step2-desc" class="text-gray-400 text-sm leading-relaxed">El software procesa tu configuración personalizada de <b>Macros</b>.</p>
+            </div>
+            <div class="glass-panel p-10 rounded-[2.5rem] relative" data-aos="fade-up" data-aos-delay="200">
+                <span class="step-number text-kick">03</span>
+                <div class="w-12 h-12 bg-kick/20 rounded-xl flex items-center justify-center mb-6 border border-kick/50"><i class="fa-solid fa-keyboard text-kick"></i></div>
+                <h3 id="step3-title" class="text-xl font-black uppercase italic mb-4">System Injection</h3>
+                <p id="step3-desc" class="text-gray-400 text-sm leading-relaxed">Mediante <b>user32.dll</b> e Interop Services, inyectamos la entrada al sistema.</p>
             </div>
         </div>
     </section>
 
     <section id="discord" class="py-32 max-w-7xl mx-auto px-6">
-        <div class="glass-panel p-16 rounded-[4rem] relative overflow-hidden group">
-            <div class="absolute -right-20 -top-20 opacity-5 group-hover:rotate-12 transition duration-1000">
-                <i class="fa-brands fa-discord text-[25rem]"></i>
-            </div>
-            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-                <div class="text-center lg:text-left">
-                    <h2 id="discord-title" class="text-6xl font-black italic uppercase mb-4">COMUNIDAD <span class="text-twitch">& AYUDA</span></h2>
-                    <p id="discord-desc" class="text-xl text-gray-400 max-w-xl">Cualquier duda, idea de mejora o contacto profesional, encuéntranos en nuestro Discord oficial.</p>
+        <div class="glass-panel p-10 md:p-16 rounded-[4rem] relative overflow-hidden group">
+            <div class="absolute -right-20 -top-20 opacity-5 group-hover:rotate-12 transition duration-1000"><i class="fa-brands fa-discord text-[25rem]"></i></div>
+            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 text-center lg:text-left">
+                <div>
+                    <h2 id="discord-title" class="text-5xl md:text-6xl font-black italic uppercase mb-4">COMUNIDAD <span class="text-twitch">& AYUDA</span></h2>
+                    <p id="discord-desc" class="text-xl text-gray-400 max-w-xl">Cualquier duda o contacto profesional, encuéntranos en nuestro Discord oficial.</p>
                 </div>
-                <a href="https://discord.gg/kxprrrQuTh" target="_blank" class="bg-[#5865F2] text-white px-12 py-6 rounded-2xl font-black text-xl hover:scale-110 transition shadow-2xl flex items-center gap-4 uppercase">
+                <a href="https://discord.gg/kxprrrQuTh" target="_blank" id="btn-discord" class="bg-[#5865F2] text-white px-12 py-6 rounded-2xl font-black text-xl hover:scale-110 transition shadow-2xl flex items-center gap-4 uppercase">
                     <i class="fa-brands fa-discord"></i> Entrar al Servidor
                 </a>
             </div>
@@ -243,17 +212,12 @@
     <footer class="py-20 border-t border-white/5 text-center">
         <img src="img/nitroys.png" alt="Nitroys" class="h-12 mx-auto mb-8 grayscale opacity-50">
         <p id="footer-dev" class="text-[10px] font-bold tracking-[0.5em] text-gray-600 mb-8 uppercase italic">A NITROYS STUDIOS PRODUCTION</p>
-        <div class="flex justify-center gap-8 text-gray-500 text-xl">
-            <a href="https://discord.gg/kxprrrQuTh" class="hover:text-twitch transition"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://joaodionisio199907-code.github.io/GhostyWeb/" class="hover:text-gold transition"><i class="fa-solid fa-globe"></i></a>
-        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 40 },
@@ -263,82 +227,123 @@
                 "size": { "value": 2 },
                 "line_linked": { "enable": true, "distance": 150, "color": "#9146ff", "opacity": 0.1, "width": 1 },
                 "move": { "enable": true, "speed": 1 }
-            },
-            "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } }
+            }
         });
 
         const translations = {
             es: {
-                heroTitle: "CHAOS IS<br><span class='text-transparent bg-clip-text bg-gradient-to-r from-twitch via-white to-gold'>ELEVATED.</span>",
+                buyBtn: "COMPRAR", navPrices: "Precios", navAbout: "Nosotros", navHow: "Funcionamiento", navSupport: "Soporte",
+                heroTag: "Next-Gen Stream Tool", heroTitle: "CHAOS IS<br><span class='text-transparent bg-clip-text bg-gradient-to-r from-twitch via-white to-gold'>ELEVATED.</span>",
                 heroDesc: "BitPranker no es solo un bot. Es el puente definitivo entre tu chat y tu teclado. Monetiza, interactúa y diviértete como nunca.",
-                aboutTitle: "SOMOS <span class='text-gold'>NITROYS STUDIOS</span>",
-                aboutP1: "Nacimos en el corazón de la comunidad de streaming. Como creadores de contenido, entendemos que la interacción es el alma de un directo.",
-                aboutP2: "Nitroys Studios se dedica a desarrollar software de alto rendimiento para streamers que buscan algo más que simples alertas. Desarrollamos herramientas que cambian las reglas del juego.",
-                priceMainTitle: "NUESTROS <span class='text-twitch'>PLANES</span>",
-                discordTitle: "COMUNIDAD <span class='text-twitch'>& AYUDA</span>",
-                discordDesc: "Cualquier duda, idea de mejora o contacto profesional, encuéntranos en nuestro Discord oficial.",
-                footerDev: "UNA PRODUCCIÓN DE NITROYS STUDIOS",
-                li1: "Macros Inmediatos", li2: "Control de Bits", li3: "Lifetime License",
-                li4: "Ultra-Fast Chat", li5: "No Latency", li6: "Easy Setup",
-                li7: "Voicemod Inject", li8: "Multi-Channel", li9: "VIP Support"
+                btnDownload: "DESCARGAR AHORA", btnMore: "Ver más", priceMainTitle: "NUESTROS <span class='text-twitch'>PLANES</span>", priceSub: "Elige tu nivel de caos",
+                aboutTitle: "SOMOS <span class='text-gold'>NITROYS STUDIOS</span>", aboutP1: "Nacimos en el corazón de la comunidad de streaming. Como creadores de contenido, entendemos que la interacción es el alma de un directo.",
+                aboutP2: "Nitroys Studios desarrolla software de alto rendimiento que cambia las reglas del juego.",
+                stat1: "Original", stat2: "Soporte", aboutFooter: "Liderando el desarrollo de herramientas para Tarkov, Rust y más.",
+                howTitle: "¿CÓMO <span class='text-twitch'>FUNCIONA?</span>", howSub: "Tecnología de inyección de comandos en tiempo real",
+                step1Title: "Lectura de Chat", step1Desc: "Nuestra App utiliza un motor de <b>WebView2</b> para monitorizar tu chat de forma nativa. Escaneamos mensajes en milisegundos buscando disparadores como '!jump' o '!drop'.",
+                step2Title: "Lógica de Macros", step2Desc: "El software procesa tu configuración personalizada de <b>Macros</b>. Valida tiempos de pulsación (ms), combos de teclas y Cooldown.",
+                step3Title: "Inyección al Sistema", step3Desc: "Mediante <b>user32.dll</b> e Interop Services, inyectamos la entrada directamente al Windows.",
+                discordTitle: "COMUNIDAD <span class='text-twitch'>& AYUDA</span>", discordDesc: "Cualquier duda o contacto profesional, encuéntranos en nuestro Discord oficial.",
+                btnDiscord: "Entrar al Servidor", footerDev: "UNA PRODUCCIÓN DE NITROYS STUDIOS",
+                li1: "Macros Inmediatos", li2: "Control de Bits", li3: "Lifetime License", li4: "Ultra-Fast Chat", li5: "No Latency", li6: "Easy Setup", li7: "Voicemod Inject", li8: "Multi-Channel", li9: "VIP Support"
             },
             en: {
-                heroTitle: "CHAOS IS<br><span class='text-transparent bg-clip-text bg-gradient-to-r from-twitch via-white to-gold'>ELEVATED.</span>",
+                buyBtn: "BUY NOW", navPrices: "Prices", navAbout: "About Us", navHow: "How it works", navSupport: "Support",
+                heroTag: "Next-Gen Stream Tool", heroTitle: "CHAOS IS<br><span class='text-transparent bg-clip-text bg-gradient-to-r from-twitch via-white to-gold'>ELEVATED.</span>",
                 heroDesc: "BitPranker isn't just a bot. It's the ultimate bridge between your chat and your keyboard. Monetize, interact, and have fun like never before.",
-                aboutTitle: "WE ARE <span class='text-gold'>NITROYS STUDIOS</span>",
-                aboutP1: "Born in the heart of the streaming community. As content creators, we understand that interaction is the soul of a broadcast.",
-                aboutP2: "Nitroys Studios is dedicated to developing high-performance software for streamers who want more than just alerts. We build tools that change the rules.",
-                priceMainTitle: "OUR <span class='text-twitch'>PLANS</span>",
-                discordTitle: "COMMUNITY <span class='text-twitch'>& HELP</span>",
-                discordDesc: "Any questions, improvement ideas, or professional contact, find us on our official Discord.",
-                footerDev: "A NITROYS STUDIOS PRODUCTION",
-                li1: "Immediate Macros", li2: "Bits Control", li3: "Lifetime License",
-                li4: "Ultra-Fast Chat", li5: "No Latency", li6: "Easy Setup",
-                li7: "Voicemod Inject", li8: "Multi-Channel", li9: "VIP Support"
-            },
-            jp: {
-                heroTitle: "カオスを<br><span class='text-transparent bg-clip-text bg-gradient-to-r from-twitch via-white to-gold'>進化させる。</span>",
-                heroDesc: "BitPrankerは単なるボットではありません。チャットとキーボードを結ぶ究極の架け橋です。収益化し、交流し、今までにない楽しみを。",
-                aboutTitle: "<span class='text-gold'>NITROYS STUDIOS</span>とは",
-                aboutP1: "ストリーミングコミュニティの中心で誕生しました。コンテンツクリエイターとして、インタラクションが配信の魂であることを理解しています。",
-                aboutP2: "Nitroys Studiosは、単なるアラート以上のものを求めるストリーマーのために、高性能なソフトウェアを開発することに専念しています。",
-                priceMainTitle: "<span class='text-twitch'>プラン</span>を選択",
-                discordTitle: "コミュニティ <span class='text-twitch'>& サポート</span>",
-                discordDesc: "質問、改善のアイデア、またはビジネスに関するお問い合わせは、公式Discordまでお越しください。",
-                footerDev: "NITROYS STUDIOSによる制作",
-                li1: "即時マクロ注入", li2: "Bits制御", li3: "永久ライセンス",
-                li4: "超高速チャット", li5: "遅延ゼロ", li6: "簡単設定",
-                li7: "ボイスチェンジャー連携", li8: "マルチチャネル対応", li9: "VIPサポート"
+                btnDownload: "DOWNLOAD NOW", btnMore: "View more", priceMainTitle: "OUR <span class='text-twitch'>PLANS</span>", priceSub: "Choose your level of chaos",
+                aboutTitle: "WE ARE <span class='text-gold'>NITROYS STUDIOS</span>", aboutP1: "Born in the heart of the streaming community. We understand that interaction is the soul of a broadcast.",
+                aboutP2: "Nitroys Studios develops high-performance software that changes the game rules.",
+                stat1: "Original", stat2: "Support", aboutFooter: "Leading the development of tools for Tarkov, Rust, and more.",
+                howTitle: "HOW IT <span class='text-twitch'>WORKS?</span>", howSub: "Real-time command injection technology",
+                step1Title: "Chat Reading", step1Desc: "Our app uses a <b>WebView2</b> engine to natively monitor your chat. We scan messages in milliseconds looking for triggers like '!jump' or '!drop'.",
+                step2Title: "Macro Logic", step2Desc: "The software processes your custom <b>Macro</b> settings. It validates press times (ms), key combos, and cooldowns.",
+                step3Title: "System Injection", step3Desc: "Through <b>user32.dll</b> and Interop Services, we inject keyboard or mouse input directly into Windows.",
+                discordTitle: "COMMUNITY <span class='text-twitch'>& HELP</span>", discordDesc: "Any questions or professional contact, find us on our official Discord.",
+                btnDiscord: "Join Server", footerDev: "A NITROYS STUDIOS PRODUCTION",
+                li1: "Immediate Macros", li2: "Bits Control", li3: "Lifetime License", li4: "Ultra-Fast Chat", li5: "No Latency", li6: "Easy Setup", li7: "Voicemod Inject", li8: "Multi-Channel", li9: "VIP Support"
             },
             zh: {
-                heroTitle: "混乱<br><span class='text-transparent bg-clip-text bg-gradient-to-r from-twitch via-white to-gold'>升级。</span>",
-                heroDesc: "BitPranker 不仅仅是一个机器人。它是连接聊天室和键盘的终极桥梁。以前所未有的方式获利、互动并享受乐趣。",
-                aboutTitle: "我们是 <span class='text-gold'>NITROYS STUDIOS</span>",
-                aboutP1: "诞生于直播社区的核心。作为内容创作者，我们深知互动是直播的灵魂。",
-                aboutP2: "Nitroys Studios 致力于为追求卓越的主播开发高性能软件。我们打造改变规则的工具。",
-                priceMainTitle: "我们的 <span class='text-twitch'>计划</span>",
-                discordTitle: "社区 <span class='text-twitch'>与 帮助</span>",
-                discordDesc: "任何疑问、改进建议或商务联系，请访问我们的官方 Discord。",
-                footerDev: "NITROYS STUDIOS 出品",
-                li1: "即时宏注入", li2: "Bits 控制集成", li3: "终身授权",
-                li4: "超快聊天读取", li5: "零延迟体验", li6: "快速安装",
-                li7: "变声器注入", li8: "多频道支持", li9: "VIP 技术支持"
+                buyBtn: "立即购买", navPrices: "价格", navAbout: "关于我们", navHow: "运作方式", navSupport: "支持",
+                heroTag: "下一代直播工具", heroTitle: "混乱已<br><span class='text-transparent bg-clip-text bg-gradient-to-r from-twitch via-white to-gold'>升级。</span>",
+                heroDesc: "BitPranker 不仅仅是一个机器人。它是聊天框与键盘之间的终极桥梁。以前所未有的方式实现盈利、互动和乐趣。",
+                btnDownload: "立即下载", btnMore: "查看更多", priceMainTitle: "我们的 <span class='text-twitch'>方案</span>", priceSub: "选择你的混乱级别",
+                aboutTitle: "我们是 <span class='text-gold'>NITROYS STUDIOS</span>", aboutP1: "诞生于直播社区的核心。作为内容创作者，我们深知互动是直播的灵魂。",
+                aboutP2: "Nitroys Studios 致力于为追求卓越的直播主开发高性能软件。我们打造改变规则的工具。",
+                stat1: "100% 原创", stat2: "24/7 支持", aboutFooter: "领先开发 Tarkov、Rust 等游戏的辅助工具。",
+                howTitle: "如何 <span class='text-twitch'>运作？</span>", howSub: "实时命令注入技术",
+                step1Title: "聊天读取", step1Desc: "我们的应用使用 <b>WebView2</b> 引擎原生监控您的聊天。我们在毫秒内扫描消息以寻找触发词。",
+                step2Title: "宏逻辑", step2Desc: "软件处理您的自定义 <b>宏</b> 设置。它验证按键时间 (ms)、组合键和冷却时间。",
+                step3Title: "系统注入", step3Desc: "通过 <b>user32.dll</b>，我们将键盘或鼠标输入直接注入 Windows 系统。",
+                discordTitle: "社区 <span class='text-twitch'>与 帮助</span>", discordDesc: "如有任何疑问 or 商务合作，请在我们的官方 Discord 中联系我们。",
+                btnDiscord: "加入服务器", footerDev: "NITROYS STUDIOS 出品",
+                li1: "即时宏", li2: "Bits 控制", li3: "终身授权", li4: "极速聊天", li5: "零延迟", li6: "简单设置", li7: "Voicemod 注入", li8: "多频道支持", li9: "VIP 支持"
+            },
+            jp: {
+                buyBtn: "購入する", navPrices: "価格", navAbout: "会社概要", navHow: "仕組み", navSupport: "サポート",
+                heroTag: "次世代配信ツール", heroTitle: "カオスは<br><span class='text-transparent bg-clip-text bg-gradient-to-r from-twitch via-white to-gold'>進化した。</span>",
+                heroDesc: "BitPrankerは単なるボットではありません。チャットとキーボードをつなぐ究極の架け橋です。かつてない方法で収益化し、交流し、楽しみましょう。",
+                btnDownload: "今すぐダウンロード", btnMore: "詳細を見る", priceMainTitle: "料金 <span class='text-twitch'>プラン</span>", priceSub: "カオスのレベルを選択",
+                aboutTitle: "私たちが <span class='text-gold'>NITROYS STUDIOS</span> です", aboutP1: "ストリーミングコミュニティの中心で生まれました。インタラクションが配信の魂であることを理解しています。",
+                aboutP2: "Nitroys Studiosは、ゲームのルールを変える高性能なツールの開発に専念しています。",
+                stat1: "オリジナル", stat2: "サポート", aboutFooter: "TarkovやRustなどのツール開発をリードしています。",
+                howTitle: "仕組みは <span class='text-twitch'>？</span>", howSub: "リアルタイムコマンド注入テクノロジー",
+                step1Title: "チャット読み取り", step1Desc: "<b>WebView2</b>エンジンを使用してチャットをネイティブに監視します。ミリ秒単位でトリガーをスキャンします。",
+                step2Title: "マクロロジック", step2Desc: "カスタム<b>マクロ</b>設定を処理します。押下時間(ms)、コンボ、クールダウンを検証します。",
+                step3Title: "システム注入", step3Desc: "<b>user32.dll</b>を介して、キーボード入力をWindowsに直接注入し、あらゆるゲームで動作させます。",
+                discordTitle: "コミュニティ <span class='text-twitch'>＆ ヘルプ</span>", discordDesc: "ご質問や仕事の依頼は、公式Discordまでお越しください。",
+                btnDiscord: "サーバーに参加", footerDev: "NITROYS STUDIOS 制作",
+                li1: "即時マクロ", li2: "Bits制御", li3: "永久ライセンス", li4: "超速チャット", li5: "遅延なし", li6: "簡単設定", li7: "Voicemod連携", li8: "マルチチャンネル", li9: "VIPサポート"
             }
         };
 
         function changeLang(lang) {
             document.getElementById('current-lang').innerText = lang.toUpperCase();
             const t = translations[lang];
+            
+            // Navbar
+            document.getElementById('nav-prices').innerText = t.navPrices;
+            document.getElementById('nav-about').innerText = t.navAbout;
+            document.getElementById('nav-how').innerText = t.navHow;
+            document.getElementById('nav-support').innerText = t.navSupport;
+
+            // Hero
+            document.getElementById('hero-tag').innerText = t.heroTag;
             document.getElementById('hero-title').innerHTML = t.heroTitle;
             document.getElementById('hero-desc').innerText = t.heroDesc;
+            document.getElementById('btn-download').innerText = t.btnDownload;
+            document.getElementById('btn-more').innerText = t.btnMore;
+
+            // Prices
+            document.getElementById('price-main-title').innerHTML = t.priceMainTitle;
+            document.getElementById('price-sub').innerText = t.priceSub;
+            document.querySelectorAll('.btn-buy-text').forEach(btn => btn.innerText = t.buyBtn);
+
+            // About
             document.getElementById('about-title').innerHTML = t.aboutTitle;
             document.getElementById('about-p1').innerText = t.aboutP1;
             document.getElementById('about-p2').innerText = t.aboutP2;
-            document.getElementById('price-main-title').innerHTML = t.priceMainTitle;
+            document.getElementById('stat-1').innerText = t.stat1;
+            document.getElementById('stat-2').innerText = t.stat2;
+            document.getElementById('about-footer-text').innerText = t.aboutFooter;
+
+            // How it works
+            document.getElementById('how-title').innerHTML = t.howTitle;
+            document.getElementById('how-sub').innerText = t.howSub;
+            document.getElementById('step1-title').innerText = t.step1Title;
+            document.getElementById('step1-desc').innerHTML = t.step1Desc;
+            document.getElementById('step2-title').innerText = t.step2Title;
+            document.getElementById('step2-desc').innerHTML = t.step2Desc;
+            document.getElementById('step3-title').innerText = t.step3Title;
+            document.getElementById('step3-desc').innerHTML = t.step3Desc;
+
+            // Discord & Footer
             document.getElementById('discord-title').innerHTML = t.discordTitle;
             document.getElementById('discord-desc').innerText = t.discordDesc;
+            document.getElementById('btn-discord').innerHTML = `<i class="fa-brands fa-discord"></i> ${t.btnDiscord}`;
             document.getElementById('footer-dev').innerText = t.footerDev;
 
+            // Lists
             for(let i=1; i<=9; i++) {
                 const el = document.querySelector('.li-' + i);
                 if(el) el.innerText = t['li' + i];
