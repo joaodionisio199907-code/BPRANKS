@@ -30,6 +30,15 @@
         .btn-buy { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: block; width: 100%; text-align: center; }
         .btn-buy:hover { transform: scale(1.05); filter: brightness(1.1); }
         .step-number { font-size: 4rem; font-weight: 900; opacity: 0.1; position: absolute; top: -10px; right: 20px; }
+
+        /* Animación para el robot */
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-robot { animation: floating 4s ease-in-out infinite; }
+        .robot-shadow { filter: drop-shadow(0 0 20px rgba(145, 70, 255, 0.4)); }
     </style>
 </head>
 <body>
@@ -64,6 +73,10 @@
     </nav>
 
     <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 overflow-hidden">
+        <div class="absolute right-[5%] top-[25%] hidden lg:block animate-robot" data-aos="fade-left">
+            <img src="img/Pranki.png" alt="Mascot" class="h-64 robot-shadow">
+        </div>
+
         <div class="relative z-10" data-aos="zoom-in">
             <div id="hero-tag" class="inline-block px-4 py-1 border border-twitch/30 rounded-full text-[10px] font-black tracking-[0.5em] mb-8 bg-twitch/5 uppercase">Next-Gen Stream Tool</div>
             <h1 id="hero-title" class="text-6xl md:text-[10rem] font-black italic leading-[0.8] tracking-tighter mb-10">
@@ -172,24 +185,31 @@
             <h2 id="how-title" class="text-5xl font-[900] italic uppercase tracking-tighter">¿CÓMO <span class="text-twitch">FUNCIONA?</span></h2>
             <p id="how-sub" class="text-gray-500 font-bold uppercase text-[10px] tracking-[0.5em] mt-2">Tecnología de inyección de comandos en tiempo real</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass-panel p-10 rounded-[2.5rem] relative" data-aos="fade-up">
-                <span class="step-number text-twitch">01</span>
-                <div class="w-12 h-12 bg-twitch/20 rounded-xl flex items-center justify-center mb-6 border border-twitch/50"><i class="fa-solid fa-comments text-twitch"></i></div>
-                <h3 id="step1-title" class="text-xl font-black uppercase italic mb-4">Chat Reading</h3>
-                <p id="step1-desc" class="text-gray-400 text-sm leading-relaxed">Nuestra App utiliza un motor de <b>WebView2</b> para monitorizar tu chat de forma nativa.</p>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
+            <div class="hidden lg:block" data-aos="fade-right">
+                <img src="img/Pranki.png" alt="Explicación" class="w-full robot-shadow">
             </div>
-            <div class="glass-panel p-10 rounded-[2.5rem] relative border-b-2 border-b-gold" data-aos="fade-up" data-aos-delay="100">
-                <span class="step-number text-gold">02</span>
-                <div class="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mb-6 border border-gold/50"><i class="fa-solid fa-gears text-gold"></i></div>
-                <h3 id="step2-title" class="text-xl font-black uppercase italic mb-4">Macro Logic</h3>
-                <p id="step2-desc" class="text-gray-400 text-sm leading-relaxed">El software procesa tu configuración personalizada de <b>Macros</b>.</p>
-            </div>
-            <div class="glass-panel p-10 rounded-[2.5rem] relative" data-aos="fade-up" data-aos-delay="200">
-                <span class="step-number text-kick">03</span>
-                <div class="w-12 h-12 bg-kick/20 rounded-xl flex items-center justify-center mb-6 border border-kick/50"><i class="fa-solid fa-keyboard text-kick"></i></div>
-                <h3 id="step3-title" class="text-xl font-black uppercase italic mb-4">System Injection</h3>
-                <p id="step3-desc" class="text-gray-400 text-sm leading-relaxed">Mediante <b>user32.dll</b> e Interop Services, inyectamos la entrada al sistema.</p>
+
+            <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel p-10 rounded-[2.5rem] relative" data-aos="fade-up">
+                    <span class="step-number text-twitch">01</span>
+                    <div class="w-12 h-12 bg-twitch/20 rounded-xl flex items-center justify-center mb-6 border border-twitch/50"><i class="fa-solid fa-comments text-twitch"></i></div>
+                    <h3 id="step1-title" class="text-xl font-black uppercase italic mb-4">Chat Reading</h3>
+                    <p id="step1-desc" class="text-gray-400 text-sm leading-relaxed">Nuestra App utiliza un motor de <b>WebView2</b> para monitorizar tu chat de forma nativa.</p>
+                </div>
+                <div class="glass-panel p-10 rounded-[2.5rem] relative border-b-2 border-b-gold" data-aos="fade-up" data-aos-delay="100">
+                    <span class="step-number text-gold">02</span>
+                    <div class="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mb-6 border border-gold/50"><i class="fa-solid fa-gears text-gold"></i></div>
+                    <h3 id="step2-title" class="text-xl font-black uppercase italic mb-4">Macro Logic</h3>
+                    <p id="step2-desc" class="text-gray-400 text-sm leading-relaxed">El software procesa tu configuración personalizada de <b>Macros</b>.</p>
+                </div>
+                <div class="glass-panel p-10 rounded-[2.5rem] relative" data-aos="fade-up" data-aos-delay="200">
+                    <span class="step-number text-kick">03</span>
+                    <div class="w-12 h-12 bg-kick/20 rounded-xl flex items-center justify-center mb-6 border border-kick/50"><i class="fa-solid fa-keyboard text-kick"></i></div>
+                    <h3 id="step3-title" class="text-xl font-black uppercase italic mb-4">System Injection</h3>
+                    <p id="step3-desc" class="text-gray-400 text-sm leading-relaxed">Mediante <b>user32.dll</b> e Interop Services, inyectamos la entrada al sistema.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -209,7 +229,11 @@
         </div>
     </section>
 
-    <footer class="py-20 border-t border-white/5 text-center">
+    <div class="flex justify-center -mb-24 relative z-20" data-aos="fade-up">
+        <img src="img/Pranki.png" alt="Footer Mascot" class="h-48 md:h-64 robot-shadow">
+    </div>
+
+    <footer class="py-20 border-t border-white/5 text-center bg-black">
         <img src="img/nitroys.png" alt="Nitroys" class="h-12 mx-auto mb-8 grayscale opacity-50">
         <p id="footer-dev" class="text-[10px] font-bold tracking-[0.5em] text-gray-600 mb-8 uppercase italic">A NITROYS STUDIOS PRODUCTION</p>
     </footer>
@@ -285,7 +309,7 @@
                 heroDesc: "BitPrankerは単なるボットではありません。チャットとキーボードをつなぐ究極の架け橋です。かつてない方法で収益化し、交流し、楽しみましょう。",
                 btnDownload: "今すぐダウンロード", btnMore: "詳細を見る", priceMainTitle: "料金 <span class='text-twitch'>プラン</span>", priceSub: "カオスのレベルを選択",
                 aboutTitle: "私たちが <span class='text-gold'>NITROYS STUDIOS</span> です", aboutP1: "ストリーミングコミュニティの中心で生まれました。インタラクションが配信の魂であることを理解しています。",
-                aboutP2: "Nitroys Studiosは、ゲームのルールを変える高性能なツールの開発に専念しています。",
+                aboutP2: "Nitroys Studiosは、ゲーム의ルールを変える高性能なツールの開発に専念しています。",
                 stat1: "オリジナル", stat2: "サポート", aboutFooter: "TarkovやRustなどのツール開発をリードしています。",
                 howTitle: "仕組みは <span class='text-twitch'>？</span>", howSub: "リアルタイムコマンド注入テクノロジー",
                 step1Title: "チャット読み取り", step1Desc: "<b>WebView2</b>エンジンを使用してチャットをネイティブに監視します。ミリ秒単位でトリガーをスキャンします。",
@@ -352,5 +376,3 @@
     </script>
 </body>
 </html>
-
-
